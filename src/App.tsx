@@ -1,35 +1,19 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Outlet } from 'react-router-dom';
+import Nav from './components/Navigation';
 
-function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+export default function App() {
+	return (
+		<div className='flex flex-col min-h-screen justify-between'>
+			<header className='px-4 py-2 bg-slate-700 text-white shadow-md shadow-stone-800 flex flex-wrap justify-between'>
+				<h1>React Fetch Example with Wrangler</h1>
+        <Nav />
+			</header>
+			<main className='px-4 py-2 flex-1 border border-red-500'>
+				<Outlet />
+			</main>
+			<footer className='px-4 py-2 h-24 bg-black text-white'>
+				Footer
+			</footer>
+		</div>
+	);
 }
-
-export default App
