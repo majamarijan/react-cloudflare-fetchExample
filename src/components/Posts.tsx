@@ -14,6 +14,7 @@ export default function Posts() {
 	const { pageStart, pageEnd, nextPage, prevPage, disabled } = usePagination(
 		posts?.length ?? 0
 	);
+
 	if (isLoading) {
 		return <div>Loading...</div>;
 	}
