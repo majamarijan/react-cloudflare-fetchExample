@@ -8,7 +8,7 @@ export default function Post() {
 	
 	return (
 		<div className='px-7 py-6 max-w-xl mx-auto'>
-			<span className='inline-block px-4 py-2 border rounded text-slate-600 mb-4'>Post No.{post.id}</span><Link to={`../`} relative='path'>Back</Link>
+			<span className='inline-block mr-4 py-2 rounded text-slate-600 mb-4'>Post No.{post.id}</span><Link to={`../`} relative='path' className='inline-block px-4 py-2 bg-teal-600 rounded text-slate-200'>👈Back</Link>
 			<h1 className='text-4xl'>{post.title}</h1>
 			<p>Accessed: {new Date().toLocaleDateString()} </p>
 			<p className='py-8'>{post.body}</p>

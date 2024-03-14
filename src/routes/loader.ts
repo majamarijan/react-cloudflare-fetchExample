@@ -1,10 +1,10 @@
-import { QueryClient, queryOptions } from "@tanstack/react-query";
+import { QueryCache, QueryClient, queryOptions, useQuery } from "@tanstack/react-query";
 import { LoaderFunctionArgs } from "react-router-dom";
 import { getPosts } from "../../functions/api/fetchData";
 
 const postListQuery = (q?:string)=> {
   return queryOptions({
-    queryKey: ['posts', q ?? 'all'],
+    queryKey: ['posts', q ?? ''],
     queryFn: ()=> getPosts(q)
   })
 }
@@ -16,12 +16,14 @@ export const queryPosts = {
 
 export function rootLoader(queryClient: QueryClient) {
   return async ({request}: LoaderFunctionArgs)=> {
+    console.log(request)
     const url = new URL(request.url);
     const q = url.searchParams.get('q') ?? '';
     await queryClient.ensureQueryData(postListQuery(q));
     return {q}
   }
 }
+
 
 
 export const postDetailQuery = (id:string)=> {

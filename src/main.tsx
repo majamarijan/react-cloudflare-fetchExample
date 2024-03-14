@@ -7,8 +7,8 @@ import './index.css';
 import ErrorPage from './routes/404.tsx';
 import Post from './components/Post.tsx';
 import React from 'react';
-import { getPosts } from '../functions/api/fetchData.ts';
 import Posts from './components/Posts.tsx';
+import { getPosts } from '../functions/api/fetchData.ts';
 
 const queryClient = new QueryClient({
 	defaultOptions: {
@@ -23,11 +23,12 @@ const router = createBrowserRouter([
 		path: '/',
 		element: <App />,
 		errorElement: <ErrorPage />,
-		loader: rootLoader(queryClient),
+		loader: ()=> rootLoader(queryClient),
 		children: [
 			{
 				path: '/posts',
 				element: <Posts />,
+				loader: async ()=> await getPosts()
 			},
 			{
 				path: '/posts/:id',
